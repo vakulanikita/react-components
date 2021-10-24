@@ -1,3 +1,4 @@
+/* Todo app */
 .todo-app {
   margin: 2rem auto 0 auto;
   max-width: 400px;
@@ -5,4 +6,10 @@
 
 .top-panel {
   margin: 1rem 0;
+}
+
+/* Table app */
+.table-app {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
 }
