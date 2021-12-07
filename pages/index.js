@@ -1,13 +1,12 @@
-import TableHeader from '../table/table-header';
-import TableList from '../table/table-list';
-import TableFooter from '../table/table-footer';
-import TodoHeader from '../todo/todo-header';
-import SearchPanel from '../todo/search-panel';
-import TodoList from '../todo/todo-list';
-import ItemStatusFilter from '../todo/item-status-filter';
-import ItemAddForm from '../todo/item-add-form';
+import TableHeader from '../components/table/table-header';
+import TableList from '../components/table/table-list';
+import TableFooter from '../components/table/table-footer';
+import TodoHeader from '../components/todo/todo-header';
+import SearchPanel from '../components/todo/search-panel';
+import TodoList from '../components/todo/todo-list';
+import ItemStatusFilter from '../components/todo/item-status-filter';
+import ItemAddForm from '../components/todo/item-add-form';
 
-import './app.css';
 import { Component } from 'react';
 
 export default class App extends Component  {
@@ -171,6 +170,23 @@ export default class App extends Component  {
 
           <ItemAddForm onItemAdded={ this.addItem } />
         </div>
+        <style jsx>{`
+          /* Todo app */
+          .todo-app {
+            margin: 2rem auto 0 auto;
+            max-width: 400px;
+          }
+
+          .top-panel {
+            margin: 1rem 0;
+          }
+
+          /* Table app */
+          .table-app {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+          }
+        `}</style>
       </>
     )
   }

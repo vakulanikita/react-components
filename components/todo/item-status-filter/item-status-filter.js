@@ -1,8 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
 
-import './item-status-filter.css';
-
 export default class ItemStatusFilter extends Component {
 
   buttons = [

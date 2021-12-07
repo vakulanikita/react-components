@@ -1,4 +1,4 @@
-import './table-header.css';
+// import './table-header.css';
 
 const TableHeader = () => {
   return (

@@ -1,4 +1,4 @@
-import './table-footer.css'
+// import './table-footer.css'
 
 const TableFooter = () => {
   return (

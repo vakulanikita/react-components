@@ -1,4 +1,4 @@
-import './table-list.css';
+// import './table-list.css';
 import TableListItem from '../table-list-item';
 
 const TableList = ({props}) => {

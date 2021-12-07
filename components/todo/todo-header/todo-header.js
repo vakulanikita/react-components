@@ -1,5 +1,4 @@
 import React from 'react';
-import './todo-header.css';
 
 const TodoHeader = ({toDo, done}) => {
   return (

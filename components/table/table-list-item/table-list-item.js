@@ -1,4 +1,4 @@
-import './table-list-item.css';
+// import './table-list-item.css';
 
 const TableListItem = ({name, days, salary}) => {
   return (
