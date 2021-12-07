@@ -1,11 +1,8 @@
-import TableHeader from '../components/table/table-header';
-import TableList from '../components/table/table-list';
-import TableFooter from '../components/table/table-footer';
-import TodoHeader from '../components/todo/todo-header';
-import SearchPanel from '../components/todo/search-panel';
-import TodoList from '../components/todo/todo-list';
-import ItemStatusFilter from '../components/todo/item-status-filter';
-import ItemAddForm from '../components/todo/item-add-form';
+import TodoHeader from '../components/todo-header';
+import SearchPanel from '../components/search-panel';
+import TodoList from '../components/todo-list';
+import ItemStatusFilter from '../components/item-status-filter';
+import ItemAddForm from '../components/item-add-form';
 
 import { Component } from 'react';
 
