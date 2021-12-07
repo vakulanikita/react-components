@@ -1,10 +1,17 @@
+import { Component } from 'react';
+
+import {
+  useColorModeValue,
+  Container,
+  Box,
+} from '@chakra-ui/react'
+
 import TodoHeader from '../components/todo-header';
 import SearchPanel from '../components/search-panel';
 import TodoList from '../components/todo-list';
 import ItemStatusFilter from '../components/item-status-filter';
 import ItemAddForm from '../components/item-add-form';
 
-import { Component } from 'react';
 
 export default class App extends Component  {
 
@@ -140,12 +147,13 @@ export default class App extends Component  {
     const todoCount = todoData.length - doneCount;
 
     return (
-      <>
+      <Container>
         {/* <div className="table-app d-none">
           <TableHeader />
           <TableList props={this.state.tableData} />
           <TableFooter />
         </div> */}
+        <Box>Hello</Box>
 
         <div className="todo-app">
           <TodoHeader toDo={todoCount} done={doneCount} />
@@ -184,7 +192,7 @@ export default class App extends Component  {
             margin: 2rem auto 0 auto;
           }
         `}</style>
-      </>
+      </Container>
     )
   }
 }
