@@ -1,4 +1,9 @@
-import React from "react";
+import {
+  Input,
+  Button,
+  Flex,
+  Box
+} from '@chakra-ui/react'
 import { Component } from "react";
 
 export default class ItemAddForm extends Component {
@@ -25,34 +30,38 @@ export default class ItemAddForm extends Component {
     this.setState({
       label: ''
     })
-    console.log(this.state);
   }
 
   render() {
     return (
-      <form className="item-add-form d-flex"
-            onSubmit={this.onSubmit}>
-        {/* Добавление value={this.state.label} сделало input controlled elem
-            Также, когда React устанавливает value, это не приводит к onChange
-            onChange() обновляет state, а state обновляет value */}
-        <input type="text" className="form-control" 
+      <Box mt="15px">
+        <form onSubmit={this.onSubmit}>
+          {/* Добавление value={this.state.label} сделало input controlled elem
+              Также, когда React устанавливает value, это не приводит к onChange
+              onChange() обновляет state, а state обновляет value */}
+          <Flex>
+            <Input
+              className="form-control" 
+              type="text"
+              bg="white"
+              w="auto"
+              flexGrow="1"
+              mr="1"
               onChange={this.onLabelChange}
               placeholder="What needs to be done"
-              value={this.state.label}/>
-        <button
-          className="btn btn-outline-secondary">
-          Add Item
-        </button>
-        <style jsx>{`
-          .item-add-form {
-            margin-top: 15px;
-          }
-
-          .item-add-form input {
-            margin-right: 3px;
-          }
-        `}</style>
-      </form>
+              value={this.state.label}
+            />
+            <Button
+              type="submit"
+              className="btn btn-outline-secondary"
+              colorScheme="purple"
+              variant="outline"
+            >
+              Add Item
+            </Button>
+          </Flex>
+        </form>
+      </Box>
     )
   }
 }

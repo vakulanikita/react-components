@@ -1,4 +1,7 @@
-import React from 'react';
+import {
+  List,
+  ListItem
+} from '@chakra-ui/react'
 import TodoListItem from './todo-list-item';
 
 const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
@@ -6,28 +9,21 @@ const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
     const { id, ...itemProps } = item;
     
     return (
-      <li key={id} className="list-group-item">
+      <ListItem key={id}>
         <TodoListItem 
           {...itemProps }
           onDeleted={ () => onDeleted(id) }
           onToggleImportant={ () => onToggleImportant(id) }
           onToggleDone={ () => onToggleDone(id) }
         />
-      </li>
+      </ListItem>
     );
   });
 
   return (
-    <>
-      <ul className="list-group todo-list">
-        { elements }
-      </ul>
-      <style jsx>{`
-        .todo-list .list-group-item {
-          padding: .25rem .75rem;
-        }
-      `}</style>
-    </>
+    <List>
+      { elements }
+    </List>
   );
 };
 

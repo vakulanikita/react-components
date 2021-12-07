@@ -1,5 +1,8 @@
-import React from 'react';
 import { Component } from 'react';
+import {
+  ButtonGroup,
+  Button
+} from '@chakra-ui/react'
 
 export default class ItemStatusFilter extends Component {
 
@@ -15,22 +18,26 @@ export default class ItemStatusFilter extends Component {
 
     const buttons = this.buttons.map(({name, label}) => {
       const isActive = filter === name;
-      const clazz = isActive ? 'btn-info' : 'btn-outline-secondary';
+      const clazz = isActive ? 'solid' : 'outline';
       return (
-        // атрибут key только для оптимазаций React
-        <button type="button" 
-        className={`btn ${clazz}`} 
-        key={name}
-        onClick={() => onFilterChange(name)}>
+        <Button
+          _focus={{
+            boxShadow: '0'
+          }}
+          colorScheme="purple"
+          variant={clazz}
+          key={name}
+          onClick={() => onFilterChange(name)}
+        >
         {label}
-        </button>
+        </Button>
       )
     })
 
     return (
-      <div className="btn-group">
+      <ButtonGroup spacing={0}>
         { buttons }
-      </div>
+      </ButtonGroup>
     );
   }
 }

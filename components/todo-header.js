@@ -1,26 +1,29 @@
-import React from 'react';
+import {
+  Flex,
+  Heading
+} from '@chakra-ui/react'
 
 const TodoHeader = ({toDo, done}) => {
   return (
     <>
-    <div className="app-header d-flex">
-      <h1>Todo List</h1>
-      <h2>{toDo} more to do, {done} done</h2>
-    </div>
-    <style jsx>{`
-      .app-header {
-        align-items: flex-end;
-      }
-
-      .app-header h1 {
-        flex-grow: 1;
-      }
-
-      .app-header h2 {
-        font-size: 1.2rem;
-        color: grey;
-      }
-    `}</style>
+      <Flex justifyContent="space-between" alignItems="flex-end">
+        <Heading
+          as="h1"
+          flexFlow={1}
+          lineHeight="shorter"
+          fontWeight="bold"
+        >
+          Todo List
+        </Heading>
+        <Heading
+          as="h2"
+          fontSize="xl"
+          color="gray.600"
+          fontWeight="medium"
+        >
+          {toDo} more to do, {done} done
+        </Heading>
+      </Flex>
     </>
   );
 };

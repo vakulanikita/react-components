@@ -1,5 +1,5 @@
-import React from 'react';
 import { Component } from 'react';
+import { Input } from '@chakra-ui/react'
 
 export default class SearchPanel extends Component {
 
@@ -17,20 +17,16 @@ export default class SearchPanel extends Component {
     }
 
     return (
-      <>
-        <input type="text"
-          className="form-control search-input"
-          placeholder="type to search"
-          onChange={onChange}
-          value={this.state.term}/>
-        <style jsx>{`
-          .search-input {
-            width: auto;
-            flex-grow: 1;
-            margin-right: 3px;
-          }
-        `}</style>
-      </>
+      <Input 
+        flexGrow="1"
+        mr="1"
+        w="auto"
+        bg="white"
+        type="text"
+        placeholder="type to search"
+        onChange={onChange}
+        value={this.state.term}
+      />
     )
   }
 };

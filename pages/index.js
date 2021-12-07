@@ -4,6 +4,7 @@ import {
   useColorModeValue,
   Container,
   Box,
+  Flex
 } from '@chakra-ui/react'
 
 import TodoHeader from '../components/todo-header';
@@ -147,22 +148,17 @@ export default class App extends Component  {
     const todoCount = todoData.length - doneCount;
 
     return (
-      <Container>
-        {/* <div className="table-app d-none">
-          <TableHeader />
-          <TableList props={this.state.tableData} />
-          <TableFooter />
-        </div> */}
-        <Box>Hello</Box>
+      <Container maxW="md">
 
-        <div className="todo-app">
+        <Box my={8}>
           <TodoHeader toDo={todoCount} done={doneCount} />
-          <div className="top-panel d-flex">
+
+          <Flex my={4}>
             <SearchPanel onSearchChange={ this.onSearchChange }/>
             <ItemStatusFilter 
             filter={ filter }
             onFilterChange={this.onFilterChange} />
-          </div>
+          </Flex>
 
           <TodoList
             // до реализации поиска передавалось todoData
@@ -174,24 +170,8 @@ export default class App extends Component  {
           />
 
           <ItemAddForm onItemAdded={ this.addItem } />
-        </div>
-        <style jsx>{`
-          /* Todo app */
-          .todo-app {
-            margin: 2rem auto 0 auto;
-            max-width: 400px;
-          }
-
-          .top-panel {
-            margin: 1rem 0;
-          }
-
-          /* Table app */
-          .table-app {
-            max-width: 600px;
-            margin: 2rem auto 0 auto;
-          }
-        `}</style>
+        </Box>
+        
       </Container>
     )
   }
