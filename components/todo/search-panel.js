@@ -17,11 +17,20 @@ export default class SearchPanel extends Component {
     }
 
     return (
-      <input type="text"
-        className="form-control search-input"
-        placeholder="type to search"
-        onChange={onChange}
-        value={this.state.term}/>
+      <>
+        <input type="text"
+          className="form-control search-input"
+          placeholder="type to search"
+          onChange={onChange}
+          value={this.state.term}/>
+        <style jsx>{`
+          .search-input {
+            width: auto;
+            flex-grow: 1;
+            margin-right: 3px;
+          }
+        `}</style>
+      </>
     )
   }
 };

@@ -43,6 +43,15 @@ export default class ItemAddForm extends Component {
           className="btn btn-outline-secondary">
           Add Item
         </button>
+        <style jsx>{`
+          .item-add-form {
+            margin-top: 15px;
+          }
+
+          .item-add-form input {
+            margin-right: 3px;
+          }
+        `}</style>
       </form>
     )
   }

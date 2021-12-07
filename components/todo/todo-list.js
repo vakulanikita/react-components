@@ -1,6 +1,5 @@
 import React from 'react';
-
-import TodoListItem from '../todo-list-item';
+import TodoListItem from './todo-list-item';
 
 const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
   const elements = todos.map((item) => {
@@ -19,9 +18,16 @@ const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
   });
 
   return (
-    <ul className="list-group todo-list">
-      { elements }
-    </ul>
+    <>
+      <ul className="list-group todo-list">
+        { elements }
+      </ul>
+      <style jsx>{`
+        .todo-list .list-group-item {
+          padding: .25rem .75rem;
+        }
+      `}</style>
+    </>
   );
 };
 
