@@ -8,13 +8,13 @@ export default function ItemStatusFilter() {
 
   const {filter, onFilterChange} = useTodoContext()
 
-  buttons = [
+  const buttons = [
     { name: 'all', label: 'All' },
     { name: 'active', label: 'Active' },
     { name: 'done', label: 'Done' },
   ]
 
-  const buttons = buttons.map(({name, label}) => {
+  const elements = buttons.map(({name, label}) => {
     const isActive = filter === name;
     const clazz = isActive ? 'solid' : 'outline';
     return (
@@ -34,7 +34,7 @@ export default function ItemStatusFilter() {
 
   return (
     <ButtonGroup spacing={0}>
-      { buttons }
+      { elements }
     </ButtonGroup>
   );
 }
