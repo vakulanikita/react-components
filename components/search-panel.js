@@ -1,32 +1,20 @@
-import { Component } from 'react';
 import { Input } from '@chakra-ui/react'
+import { useTodoContext } from '../context/todo-context';
 
-export default class SearchPanel extends Component {
+export default function SearchPanel() {
 
-  state = {
-    term: '',
-  }
+  const {term, setTerm} = useTodoContext();
 
-  render() {
-
-    const onChange = (e) => {
-      const term = e.target.value;
-      this.setState({ term })
-      // вызов функции в App.js
-      this.props.onSearchChange(term);
-    }
-
-    return (
-      <Input 
-        flexGrow="1"
-        mr="1"
-        w="auto"
-        bg="white"
-        type="text"
-        placeholder="type to search"
-        onChange={onChange}
-        value={this.state.term}
-      />
-    )
-  }
+  return (
+    <Input 
+      flexGrow="1"
+      mr="1"
+      w="auto"
+      bg="white"
+      type="text"
+      placeholder="type to search"
+      onChange={e => {setTerm(e.target.value)}}
+      value={term}
+    />
+  )
 };

@@ -104,11 +104,12 @@ export function TodoProvider({ children }) {
 
   const value = {
     todoData,
-    term,
-    visibleItems,
-    onSearchChange,
     doneCount,
     todoCount,
+    term,
+    setTerm,
+    visibleItems,
+    onSearchChange,
     addItem,
     onDeleted,
     onToggleImportant,

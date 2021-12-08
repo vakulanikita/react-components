@@ -1,5 +1,3 @@
-import { useState, Component } from 'react';
-
 import {
   Container,
   Box,
@@ -12,36 +10,24 @@ import TodoList from '../components/todo-list';
 import ItemStatusFilter from '../components/item-status-filter';
 import ItemAddForm from '../components/item-add-form';
 
+export default function App() {
 
-export default class App extends Component  {
+  return (
+    <Container maxW="md">
 
-  state = {
-    term: ''
-  }
+      <Box my={8}>
+        <TodoHeader />
 
-  onSearchChange = (term) => {
-    this.setState({ term }) // аналогично {term: term}
-  }
+        <Flex my={4}>
+          <SearchPanel/>
+          <ItemStatusFilter />
+        </Flex>
 
-  render () {
+        <TodoList />
 
-    return (
-      <Container maxW="md">
-
-        <Box my={8}>
-          <TodoHeader />
-
-          <Flex my={4}>
-            <SearchPanel onSearchChange={ this.onSearchChange }/>
-            <ItemStatusFilter />
-          </Flex>
-
-          <TodoList />
-
-          <ItemAddForm />
-        </Box>
-        
-      </Container>
-    )
-  }
+        <ItemAddForm />
+      </Box>
+      
+    </Container>
+  )
 }
