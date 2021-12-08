@@ -30,10 +30,10 @@ export default class App extends Component  {
 
   createTodoItem(label) {
     return {
+      id: this.maxId++,
       label,
       important: false,
       done: false,
-      id: this.maxId++,
     }
   }
 
@@ -106,40 +106,9 @@ export default class App extends Component  {
     this.setState({ filter })
   }
 
-  search(items, term) {
-    if (term.length === 0) {
-      return items;
-    }
-
-    return items.filter((item) => {
-      return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
-    })
-  }
-
-  filter(items, filter) {
-    // switch-блок, тк может быть 3(три!) разных фильтра
-    switch(filter) {
-      case 'all':
-        return items;
-      case 'active':
-        return items.filter((item) => !item.done);
-      case 'done':
-        return items.filter((item) => item.done);
-      default:
-        return items;
-    } 
-  }
-
   render () {
     // todoData = this.state.todoData
-    const { todoData, term, filter } = this.state;
-    // отображать элементы по term и filter
-    const visibleItems = this.filter(this.search(todoData, term), filter);
-    // filter создаёт новый массив
-    // если у элемента done == true, элемент заносится в новый массив
-    // length измеряет массив
-    const doneCount = todoData.filter((el) => el.done).length;
-    const todoCount = todoData.length - doneCount;
+    const { filter } = this.state;
 
     return (
       <Container maxW="md">
@@ -150,20 +119,19 @@ export default class App extends Component  {
           <Flex my={4}>
             <SearchPanel onSearchChange={ this.onSearchChange }/>
             <ItemStatusFilter 
-            filter={ filter }
-            onFilterChange={this.onFilterChange} />
+              filter={ filter }
+              onFilterChange={this.onFilterChange}
+            />
           </Flex>
 
           <TodoList
-            // до реализации поиска передавалось todoData
-            todos={visibleItems}
             term={this.state.term}
             onDeleted={ this.deleteItem }
             onToggleImportant={this.onToggleImportant}
             onToggleDone={this.onToggleDone}
           />
 
-          <ItemAddForm onItemAdded={ this.addItem } />
+          <ItemAddForm />
         </Box>
         
       </Container>

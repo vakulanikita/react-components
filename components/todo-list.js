@@ -3,19 +3,16 @@ import {
   ListItem
 } from '@chakra-ui/react'
 import TodoListItem from './todo-list-item';
+import { useTodoContext } from '../context/todo-context'
 
-const TodoList = ({ todos, onDeleted, onToggleImportant, onToggleDone }) => {
-  const elements = todos.map((item) => {
-    const { id, ...itemProps } = item;
-    
+function TodoList() {
+  const {visibleItems} = useTodoContext()
+
+  const elements = visibleItems.map((item) => {
     return (
-      <ListItem key={id}>
-        <TodoListItem 
-          {...itemProps }
-          onDeleted={ () => onDeleted(id) }
-          onToggleImportant={ () => onToggleImportant(id) }
-          onToggleDone={ () => onToggleDone(id) }
-        />
+      <ListItem key={item.id}>
+        {/* item = {id, label, important, done} */}
+        <TodoListItem {...item} />
       </ListItem>
     );
   });
