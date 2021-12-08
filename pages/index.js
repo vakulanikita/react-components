@@ -1,7 +1,6 @@
-import { Component } from 'react';
+import { useState, Component } from 'react';
 
 import {
-  useColorModeValue,
   Container,
   Box,
   Flex
@@ -27,11 +26,6 @@ export default class App extends Component  {
     ],
     term: '',
     filter: 'all', // active, all, done
-    tableData: [
-      {name: 'Nikita Vakula', days: 6, salary: 30, id: 1},
-      {name: 'Danil Zakharov', days: 15, salary: 5, id: 2},
-      {name: 'Danil Buzin', days: 1, salary: 10, id: 3},
-    ]
   }
 
   createTodoItem(label) {
