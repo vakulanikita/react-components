@@ -12,7 +12,7 @@ export function TodoProvider({ children }) {
   const [toDo, setToDo] = useState(0)
   const [term, setTerm] = useState('')
   const [filter, setFilter] = useState('all')
-  console.log(todoData);
+  // console.log(...todoData);
 
   function createTodoItem(label) {
     return {

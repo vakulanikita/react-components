@@ -1,67 +1,51 @@
+import { useState } from 'react';
 import {
   Input,
   Button,
   Flex,
   Box
 } from '@chakra-ui/react'
-import { Component } from "react";
+import { useTodoContext } from '../context/todo-context';
 
-export default class ItemAddForm extends Component {
+export default function ItemAddForm() {
 
-  state = {
-    label: ''
-  };
+  const [label, setLabel] = useState('')
+  const { addItem } = useTodoContext()
 
-  onLabelChange = (e) => {
-    // state не зависит от предыдущего state
-    // поэтому меняю напрямую
-    this.setState({
-      label: e.target.value
-      // label: e.target.value.toUpperCase()
-    });
-    
-  };
-
-  onSubmit = (e) => {
-    // preventDefault() отменяет перезагрузку страницы по умолчанию
-    // при отправке формы
+  function onSubmit(e) {
     e.preventDefault();
-    this.props.onItemAdded(this.state.label)
-    this.setState({
-      label: ''
-    })
+    addItem(label);
+    setLabel('')
   }
 
-  render() {
-    return (
-      <Box mt="15px">
-        <form onSubmit={this.onSubmit}>
-          {/* Добавление value={this.state.label} сделало input controlled elem
-              Также, когда React устанавливает value, это не приводит к onChange
-              onChange() обновляет state, а state обновляет value */}
-          <Flex>
-            <Input
-              className="form-control" 
-              type="text"
-              bg="white"
-              w="auto"
-              flexGrow="1"
-              mr="1"
-              onChange={this.onLabelChange}
-              placeholder="What needs to be done"
-              value={this.state.label}
-            />
-            <Button
-              type="submit"
-              className="btn btn-outline-secondary"
-              colorScheme="purple"
-              variant="outline"
-            >
-              Add Item
-            </Button>
-          </Flex>
-        </form>
-      </Box>
-    )
-  }
+  return (
+    <Box mt="15px">
+      <form onSubmit={onSubmit}>
+        {/* Добавление value={label} сделало input controlled elem
+            Также, когда React устанавливает value, это не приводит к onChange
+            onChange() обновляет state, а state обновляет value */}
+        <Flex>
+          <Input
+            className="form-control" 
+            type="text"
+            bg="white"
+            w="auto"
+            flexGrow="1"
+            mr="1"
+            placeholder="What needs to be done"
+            onChange={e => setLabel(e.target.value)}
+            value={label}
+          />
+          <Button
+            type="submit"
+            className="btn btn-outline-secondary"
+            colorScheme="purple"
+            variant="outline"
+          >
+            Add Item
+          </Button>
+        </Flex>
+      </form>
+    </Box>
+  )
 }

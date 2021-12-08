@@ -145,7 +145,7 @@ export default class App extends Component  {
       <Container maxW="md">
 
         <Box my={8}>
-          <TodoHeader toDo={todoCount} done={doneCount} />
+          <TodoHeader />
 
           <Flex my={4}>
             <SearchPanel onSearchChange={ this.onSearchChange }/>
