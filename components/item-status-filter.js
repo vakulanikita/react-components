@@ -1,43 +1,40 @@
-import { Component } from 'react';
 import {
   ButtonGroup,
   Button
 } from '@chakra-ui/react'
+import { useTodoContext } from '../context/todo-context';
 
-export default class ItemStatusFilter extends Component {
+export default function ItemStatusFilter() {
+
+  const {filter, onFilterChange} = useTodoContext()
 
   buttons = [
     { name: 'all', label: 'All' },
     { name: 'active', label: 'Active' },
     { name: 'done', label: 'Done' },
   ]
-  
-  render() {
 
-    const { filter, onFilterChange } = this.props;
-
-    const buttons = this.buttons.map(({name, label}) => {
-      const isActive = filter === name;
-      const clazz = isActive ? 'solid' : 'outline';
-      return (
-        <Button
-          _focus={{
-            boxShadow: '0'
-          }}
-          colorScheme="purple"
-          variant={clazz}
-          key={name}
-          onClick={() => onFilterChange(name)}
-        >
-        {label}
-        </Button>
-      )
-    })
-
+  const buttons = buttons.map(({name, label}) => {
+    const isActive = filter === name;
+    const clazz = isActive ? 'solid' : 'outline';
     return (
-      <ButtonGroup spacing={0}>
-        { buttons }
-      </ButtonGroup>
-    );
-  }
+      <Button
+        _focus={{
+          boxShadow: '0'
+        }}
+        colorScheme="purple"
+        variant={clazz}
+        key={name}
+        onClick={() => onFilterChange(name)}
+      >
+      {label}
+      </Button>
+    )
+  })
+
+  return (
+    <ButtonGroup spacing={0}>
+      { buttons }
+    </ButtonGroup>
+  );
 }

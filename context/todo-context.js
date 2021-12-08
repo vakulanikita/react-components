@@ -9,9 +9,10 @@ export function useTodoContext() {
 let maxId = 100;
 
 export function TodoProvider({ children }) {
+  // этот массив должен подтягиваться с сервера со своими key ключами
   const [todoData, setTodoData] = useState([createTodoItem('Drink Coffee')])
   const [term, setTerm] = useState('')
-  const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState('all') // all, active, done
   // console.log(...todoData);
 
   function createTodoItem(label) {
@@ -88,6 +89,10 @@ export function TodoProvider({ children }) {
     setTodoData(toggleProperty(todoData, id, 'done'))
   };
 
+  function onFilterChange(filter) {
+    setFilter(filter)
+  }
+
   // отображать элементы по term и filter
   const visibleItems = todoFilter(todoSearch(todoData, term), filter);
 
@@ -102,13 +107,14 @@ export function TodoProvider({ children }) {
     term,
     visibleItems,
     onSearchChange,
-    filter,
     doneCount,
     todoCount,
     addItem,
     onDeleted,
     onToggleImportant,
-    onToggleDone
+    onToggleDone,
+    filter,
+    onFilterChange
   }
   
   return (
