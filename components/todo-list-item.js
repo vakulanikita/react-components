@@ -1,5 +1,4 @@
 import {
-  Box,
   IconButton,
   Text,
   Flex
@@ -30,27 +29,28 @@ export default class TodoListItem extends Component {
           textDecor={done ? "line-through" : "none"}
           color={important ? "green" : "inherit"}
           fontWeight={important ? "semibold" : "inherit"}
-          onClick={onToggleDone}
           lineHeight="shorter"
+          cursor="pointer"
+          onClick={onToggleDone}
         >
           {label}
         </Text>
   
         <Flex flexWrap="nowrap">
           <IconButton
-            onClick={onToggleImportant}
+            size="sm"
+            icon={<WarningIcon />}
             colorScheme="green"
             variant="outline"
-            icon={<WarningIcon />}
             mr={1}
-            size="sm"
+            onClick={onToggleImportant}
           />
           <IconButton
-            onClick={onDeleted}
+            size="sm"
+            icon={<DeleteIcon />}
             colorScheme="red"
             variant="outline"
-            icon={<DeleteIcon />}
-            size="sm"
+            onClick={onDeleted}
           />
         </Flex>
 
